@@ -18,9 +18,8 @@ public class Paquete
      * alto, ancho, largo (en cm) y peso 8 Kg
      */
     public Paquete()    {
-        //TODO
-         
-
+        dimension = new Dimension(40,30,50);
+        peso = 8;
     }
 
     /**
@@ -31,7 +30,9 @@ public class Paquete
      */
     public Paquete(double alto, double ancho, double largo)    {
         //TODO
-
+        generador = new Random();
+        dimension = new Dimension(alto,ancho,largo);
+        peso = generador.nextInt(7) + 2;
     }
 
     /**
@@ -40,8 +41,8 @@ public class Paquete
      * 
      */
     public Paquete(Dimension dimension, double peso)    {
-        //TODO
-
+        this.dimension = dimension;
+        this.peso = peso;
     }
 
     /**
@@ -65,8 +66,8 @@ public class Paquete
      * El volumen = alto x ancho x largo
      */
     public double calcularVolumen() {
-       //TODO
-       return 0;
+        double volumen = dimension.getAlto() * dimension.getAncho() * dimension.getLargo() ;
+        return volumen;
 
     }
 
@@ -76,7 +77,8 @@ public class Paquete
      */
     public double calcularPesoVolumetrico() {
         //TODO
-       return 0;
+        double pesoVolumetrico = calcularVolumen() / 5000;
+        return pesoVolumetrico;
 
     }
 
@@ -87,18 +89,23 @@ public class Paquete
      */
     public double calcularPesoFacturable() {
         //TODO
-       return 0;
+        double mayor;
+        if (peso > calcularPesoVolumetrico()){
+            mayor = peso;
+        }
+        else{
+            mayor = calcularPesoVolumetrico();
+        }
+        return mayor;
 
     }
-
 
     /**
      * Devuelve una copia exacta al objeto actual
      * Se obtienen copias también de los objetos que contenga
      */
     public Paquete obtenerCopia() {
-        //TODO
-       return null;
+        return new Paquete(dimension,peso);
 
     }
 
@@ -108,10 +115,12 @@ public class Paquete
      */
     public String toString() {
         //TODO
-       return null;
+        String strPaquete = String.format("%-20s\n" + dimension.toString() + "\n%20s" + "%10.2f" + "%-20s" + "\n%20s" + "%10.2f" + "%-20s" + "\n%20s" + "%10.2f" + "%-20s", "Descripción del paquete", "Peso real:", getPeso(), "(Kg)", "Volumen:", calcularVolumen(), "(cm3)", "Peso volumetrico:", calcularPesoVolumetrico(), "(Kg)");
+        return String.format(strPaquete);
+        
 
     }
-    
+
     /**
      * Muestra en pantalla el objeto actual
      * Este método se incluye como método de prueba
@@ -120,7 +129,5 @@ public class Paquete
     public void print() {
         System.out.println(this.toString());
     }
-
-    
 
 }
