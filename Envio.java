@@ -148,14 +148,18 @@ public class Envio
         else{
             switch(getNumeroPaquetes()){
                 case 1: strEnvio = strEnvio + paquete1.toString();
-                break;
-                case 2: strEnvio =strEnvio + paquete1.toString() + "\n" + paquete2.toString();
+                    break;
+                case 2: strEnvio = strEnvio + paquete1.toString() + "\n" + paquete2.toString();
+                    break;
+
             }
         }
         strEnvio = strEnvio + String.format("\n%20s" + "%10.2f" + "%-1s", "Coste total envío:", calcularCosteTotalEnvio(), "€"); 
+
         return strEnvio;
 
     }
+
     /**
      * Muestra en pantalla el objeto actual
      * Este método se incluye como método de prueba
