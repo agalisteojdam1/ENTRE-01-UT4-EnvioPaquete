@@ -56,7 +56,17 @@ public class Envio
      */
     public int getNumeroPaquetes() {
         //TODO
-       return 0;
+        int numPaquetes = 0;
+        if(paquete1 != null){
+           numPaquetes++; 
+        }
+        if(paquete2 != null){
+            numPaquetes++;
+        }
+        if(paquete3 != null){
+            numPaquetes++;
+        }
+       return numPaquetes;
 
     }
 
