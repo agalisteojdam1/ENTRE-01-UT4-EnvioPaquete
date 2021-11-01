@@ -20,9 +20,9 @@ public class Envio
      * el envío no tiene paquetes)
      */
     public Envio()    {
-        this.paquete1 = null;
-        this.paquete2 = null;
-        this.paquete3 = null;
+        this.paquete1 = new Paquete();
+        this.paquete2 = new Paquete();
+        this.paquete3 = new Paquete();
 
     }
 
@@ -55,18 +55,19 @@ public class Envio
      * (dependerá de cuántos paquetes estén a null)
      */
     public int getNumeroPaquetes() {
-        //TODO
         int numPaquetes = 0;
         if(paquete1 != null){
-           numPaquetes++; 
+            numPaquetes++; 
         }
+        
         if(paquete2 != null){
             numPaquetes++;
         }
+        
         if(paquete3 != null){
             numPaquetes++;
         }
-       return numPaquetes;
+        return numPaquetes;
 
     }
 
@@ -75,8 +76,10 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean envioCompleto() {
-       //TODO
-       return false;
+        if(getNumeroPaquetes() == 3){
+            return true;
+        }
+        return false;
 
     }
 
@@ -88,9 +91,10 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-       //TODO
-        
-
+        //TODO
+        if (envioCompleto()){
+            System.out.println("No se admiten más paquetes en el envío");
+        }
     }
 
     /**
@@ -105,8 +109,18 @@ public class Envio
      *  
      */
     public double calcularCosteTotalEnvio() {
-        //TODO
-       return 0;
+        double pesoFacturableTotal = 0;
+        switch(getNumeroPaquetes()){
+            case 1: pesoFacturableTotal = paquete1.calcularPesoFacturable();
+            break;
+            case 2: pesoFacturableTotal = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable();
+            break;
+            case 3: pesoFacturableTotal = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable() + paquete3.calcularPesoFacturable();
+            break;
+        }
+        double costeTotal = Math.round(pesoFacturableTotal) * PRECIO_KILO;
+
+        return costeTotal;
 
     }
 
@@ -116,8 +130,8 @@ public class Envio
      * (leer enunciado)
      */
     public String toString() {
-       //TODO
-       return null;
+        //TODO
+        return null;
     }
 
     /**
@@ -129,5 +143,4 @@ public class Envio
         System.out.println(this.toString());
     }
 
-    
 }
