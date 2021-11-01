@@ -115,8 +115,8 @@ public class Paquete
      */
     public String toString() {
         //TODO
-        String strPaquete = String.format("%-20s\n" + dimension.toString() + "\n%20s" + "%10.2f" + "%-20s" + "\n%20s" + "%10.2f" + "%-20s" + "\n%20s" + "%10.2f" + "%-20s", "Descripción del paquete", "Peso real:", getPeso(), "(Kg)", "Volumen:", calcularVolumen(), "(cm3)", "Peso volumetrico:", calcularPesoVolumetrico(), "(Kg)");
-        return String.format(strPaquete);
+        
+        return String.format("%-20s\n" + dimension.toString() + "\n%20s" + "%10.2f" + "%-20s" + "\n%20s" + "%10.2f" + "%-20s" + "\n%20s" + "%10.2f" + "%-20s\n", "Descripción del paquete", "Peso real:", getPeso(), "(Kg)", "Volumen:", calcularVolumen(), "(cm3)", "Peso volumetrico:", calcularPesoVolumetrico(), "(Kg)");
         
 
     }

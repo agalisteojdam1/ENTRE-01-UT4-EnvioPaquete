@@ -59,11 +59,11 @@ public class Envio
         if(paquete1 != null){
             numPaquetes++; 
         }
-        
+
         if(paquete2 != null){
             numPaquetes++;
         }
-        
+
         if(paquete3 != null){
             numPaquetes++;
         }
@@ -91,18 +91,17 @@ public class Envio
      * si se añade como primero, segundo o tercero (no han de quedar huecos)
      */
     public void addPaquete(Paquete paquete) {
-        //TODO
         if (envioCompleto()){
             System.out.println("No se admiten más paquetes en el envío");
         }
         else{
             switch(getNumeroPaquetes()){
-               case 0: this.paquete1 = paquete;
-               break;
-               case 1: this.paquete2 = paquete;
-               break;
-               case 2: this.paquete3 = paquete;
-               break;
+                case 0: this.paquete1 = paquete;
+                    break;
+                case 1: this.paquete2 = paquete;
+                    break;
+                case 2: this.paquete3 = paquete;
+                    break;
             }
         }
     }
@@ -122,13 +121,13 @@ public class Envio
         double pesoFacturableTotal = 0;
         switch(getNumeroPaquetes()){
             case 1: pesoFacturableTotal = paquete1.calcularPesoFacturable();
-            break;
+                break;
             case 2: pesoFacturableTotal = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable();
-            break;
+                break;
             case 3: pesoFacturableTotal = paquete1.calcularPesoFacturable() + paquete2.calcularPesoFacturable() + paquete3.calcularPesoFacturable();
-            break;
+                break;
         }
-        double costeTotal = Math.round(pesoFacturableTotal) * PRECIO_KILO;
+        double costeTotal = Math.ceil(pesoFacturableTotal) * PRECIO_KILO;
 
         return costeTotal;
 
@@ -141,9 +140,22 @@ public class Envio
      */
     public String toString() {
         //TODO
-        return null;
-    }
+        String strEnvio = "";
+        strEnvio = String.format("%s" + " %-1d\n", "Nº de paquetes:", getNumeroPaquetes());
+        if(envioCompleto()){
+            strEnvio = strEnvio + paquete1.toString() + "\n" + paquete2.toString() + "\n" + paquete3.toString();
+        }
+        else{
+            switch(getNumeroPaquetes()){
+                case 1: strEnvio = strEnvio + paquete1.toString();
+                break;
+                case 2: strEnvio =strEnvio + paquete1.toString() + "\n" + paquete2.toString();
+            }
+        }
+        strEnvio = strEnvio + String.format("\n%20s" + "%10.2f" + "%-1s", "Coste total envío:", calcularCosteTotalEnvio(), "€"); 
+        return strEnvio;
 
+    }
     /**
      * Muestra en pantalla el objeto actual
      * Este método se incluye como método de prueba
