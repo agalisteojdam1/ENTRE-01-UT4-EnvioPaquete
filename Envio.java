@@ -20,9 +20,9 @@ public class Envio
      * el envío no tiene paquetes)
      */
     public Envio()    {
-        this.paquete1 = new Paquete();
-        this.paquete2 = new Paquete();
-        this.paquete3 = new Paquete();
+        this.paquete1 = null;
+        this.paquete2 = null;
+        this.paquete3 = null;
 
     }
 
@@ -94,6 +94,16 @@ public class Envio
         //TODO
         if (envioCompleto()){
             System.out.println("No se admiten más paquetes en el envío");
+        }
+        else{
+            switch(getNumeroPaquetes()){
+               case 0: this.paquete1 = paquete;
+               break;
+               case 1: this.paquete2 = paquete;
+               break;
+               case 2: this.paquete3 = paquete;
+               break;
+            }
         }
     }
 
