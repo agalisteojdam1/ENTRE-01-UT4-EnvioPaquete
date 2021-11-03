@@ -76,11 +76,7 @@ public class Envio
      * (tiene exactamente 3 paquetes)
      */
     public boolean envioCompleto() {
-        if(getNumeroPaquetes() == 3){
-            return true;
-        }
-        return false;
-
+        return getNumeroPaquetes() == 3;
     }
 
     /**

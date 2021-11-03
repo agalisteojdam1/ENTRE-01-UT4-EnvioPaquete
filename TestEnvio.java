@@ -23,8 +23,9 @@ public class TestEnvio
          Paquete paquete3 = new Paquete(new Dimension(50,50,70),13);
          envio.addPaquete(paquete3);
          System.out.println("-----------------------------------------------------");
-         System.out.println("\n" + envio.toString());
+         System.out.println(envio.toString());
          System.out.println("\n-----------------------------------------------------");
+         
          paquete2.obtenerCopia();
          envio.addPaquete(paquete2.obtenerCopia());
          
